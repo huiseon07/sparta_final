@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조회</title>
+    <style>
+table.type10 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+}
+table.type10 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #ffffff;
+  background: #d0b4fae5;
+  margin: 20px 10px;
+}
+table.type10 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+}
+#test_btn1 {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 10px;
+}
+#test_btn2 {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 5px;
+}
+#test_btn3 {
+  border-radius: 5px;
+}
+#btn_group button{
+  border: 1px solid #d0b4fae5;
+  background-color: rgba(0,0,0,0);
+  color: #353131;
+  padding: 5px;
+}
+#btn_group button:hover{
+  color:#353131;
+  background-color: #eacbec;
+}
+    </style>
+</head>
+<body>
+    <center>
+    <form style="text-align: center;">
+    <h2>영화 정보 수정</h2>
+    </form>
+    <form action="check.php" method="post">
+        <table class="type10">
+            <tr>
+                <th scope="cols">title</th>
+                <td scope="row"><input type='text' name='title'></td>
+            </tr>
+            <tr>
+                <th scope="cols">author</th>
+                <td scope="row"><input type='text' name='author'></td>
+            </tr>
+            <tr>
+                <th scope="cols">country</td>
+                <td scope="row"><input type='text' name='country'></td>
+            </tr>
+            <tr>
+                <th scope="cols">category</td>
+                <td scope="row"><input type='text' name='category'></td>
+            </tr>
+            <tr>
+                <th scope="cols">year</td>
+                <td scope="row"><input type='text' name='age'></td>
+            </tr>
+            <tr>
+                <th scope="cols">age</td>
+                <td scope="row"><input type='text' name='age'></td>
+            </tr>
+        </table>
+        <div id="btn_group">
+            <button onclick=" window.location.href='/'" id="test_btn3" type="button">
+              등록</button>
+        </div>
+    </form>
+    </center>
+</body>
+</html>
