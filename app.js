@@ -1,37 +1,44 @@
 const mysql=require('mysql2')
 const express = require('express')
+const ejs = require('ejs')
+const bodyParser = require('body-parser')
+const dbConfig = require('./config/db.js')
+const db = mysql.createConnection(dbConfig)
 const app = express()
-const dbConfig = require('./config/db.js');
-const conn = mysql.createConnection(dbConfig);
-const bodyParser = require('body-parser');
 const port = 3800
-// const http = require('http')
-// const fs = require('fs')
 
 // dbConfig.connect(conn)
 
-app.set('views', __dirname + '/views');
+app.set('views',__dirname+'/views')
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
+
+app.use(express.static(__dirname+'/'))
 
 app.get('/', function(req,res) {
-    conn.connect()
+    var sql = "SELECT * FROM movies"; 
 
-    var sql = 'select * from movies'
-    conn.query(sql, function(err, rows, fields)
-    {
-        if (err) {
-            console.error('error connecting: ' + err.stack);
-        }
-        res.send(rows);
-            
-    });
-    conn.end(); // 연결 해제
+    db.query(sql, function(err, results, fields){
+        if (err) throw err;  
+        res.render('posts', {movies : results}); 
+})})
+
+app.get('/commit', (req,res) => {
+    ejs.renderFile('views/post.ejs', (err,data) => {
+        console.log(err)
+        res.send(data)
+    })
+})
+
+app.get('/register', (req,res) => {
+    ejs.renderFile('views/register.ejs', (err,data) => {
+        console.log(err)
+        res.send(data)
+    })
 })
 
 app.listen(port, () => {
     console.log(port,'포트에서 서버가 열렸습니다')
 })
-

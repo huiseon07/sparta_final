@@ -64,55 +64,58 @@ table.type10 .even {
   <center>
       <h2>영화 목록 조회</h2>
       <div id="btn_group">
-      <button id="test_btn3" type="button" onclick="location.href='/register.html'">영화 등록</button>
+      <button id="test_btn3" type="button" onclick="location.href='/register'">영화 등록</button>
       </div>
       <form action="check.php" method="post">
         <table class="type10">
         <thead>
             <tr scope="cols">
                 <th>ID</th>
-                <th>title</th>
-                <th>author</th>
-                <th>country</th>
-                <th>category</th>
-                <th>year</th>
-                <th>age</th>
+                <th>제목</th>
+                <th>감독</th>
+                <th>국가</th>
+                <th>장르</th>
+                <th>개봉일</th>
+                <th>상영등급</th>
                 <th>button</th>
             </tr>
         </thead>
+        <% movies.forEach(value => { %> 
         <tr scope="row">
-          <td>소제목</td>
-          <td>소제목1</td>
-          <td>소제목2</td>
-          <td>소제목3</td>
-          <td>소제목4</td>
-          <td>소제목3</td>
-          <td>소제목4</td>
-            <td>
-              <div id="btn_group">
-                <button onclick="location.href='post.html'" id="test_btn1" type="button">
-                  수정</button>
-                <button id="test_btn2" type="button">
-                  삭제</button>
-              </div>
-            </td>
+          <td><%= value.id  %></td>
+          <td><%= value.title  %></td>
+          <td><%= value.author  %></td>
+          <td><%= value.country  %></td>
+          <td><%= value.category  %></td>
+          <td><%= value.year  %></td>
+          <td><%= value.age  %></td>
+          <td>
+            <div id="btn_group">
+              <button onclick="location.href='/commit'" id="test_btn1" type="button">
+                수정</button>
+              <button id="test_btn2" type="button">
+                삭제</button>
+            </div>
+          </td>
         </tr>
         <tr scope="row" class="even">
-          <td class="even.">소제목</td>
-          <td class="even.">소제목2</td>
-          <td class="even.">소제목3</td>
-          <td class="even.">소제목4</td>
-          <td class="even.">소제목3</td>
-          <td class="even.">소제목4</td>
+          <td class="even."><%= value.id  %></td>
+          <td class="even."><%= value.title  %></td>
+          <td class="even."><%= value.author  %></td>
+          <td class="even."><%= value.country  %></td>
+          <td class="even."><%= value.category  %></td>
+          <td class="even."><%= value.year  %></td>
+          <td class="even."><%= value.age  %></td>
           <td class="even.">
             <div id="btn_group">
-              <button onclick="location.href='post.html'" id="test_btn1" type="button">
+              <button onclick="location.href='/commit'" id="test_btn1" type="button">
                 수정</button>
               <button id="test_btn2" type="button">
                 삭제</button>
             </div>
           </td>
       </tr>
+      <% }); %>
     </table>
   </form>
   </center>
